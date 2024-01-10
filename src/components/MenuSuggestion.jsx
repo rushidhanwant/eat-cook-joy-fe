@@ -7,15 +7,14 @@ const MenuSuggestion = () => {
   const [servings, setServings] = useState('');
   const [output, setOuput] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [apiHit, setApiHit] = useState(false);
 
   const handleInputChange = (e) => {
     setServings(e.target.value);
   };
 
   const handleButtonClick = () => {
-    setApiHit(true)
     setLoading(true)
+    setOuput([])
     const recipeData = JSON.parse(localStorage.getItem('recipe'));
     console.log("recipeData",recipeData)
     fetch(`${config.baseUrl}/get_menu_suggestion`,{
@@ -43,16 +42,15 @@ const MenuSuggestion = () => {
         })
     }).finally(() => {
         setLoading(false);
-        setApiHit(false);
     })
   };
   return (
     <div>
-    <div className="flex justify-center items-center mt-8 ">
+    <div className="flex justify-center items-center mt-4 ">
     <h1 className="flex-start font-bold mr-10"> Suggest Menu</h1>
       <input
         type="text"
-        placeholder="Enter Servings"
+        placeholder="Enter Servings (ex. 4)"
         value={servings}
         onChange={handleInputChange}
         className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring focus:border-blue-300"
@@ -70,6 +68,7 @@ const MenuSuggestion = () => {
         {loading && <Loader /> }
         {output.scaled_recipe && <OutputMenu output={output}/>}
     </div>
+    <div className="flex justify-center items-center mt-2 text-sm">gpt takes few seconds to respond</div>
     </div>
   );
 };

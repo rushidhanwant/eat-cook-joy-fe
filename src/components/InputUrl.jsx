@@ -14,6 +14,7 @@ const UrlInput = () => {
 
   const handleButtonClick = () => {
     setLoading(true)
+    setOuput([])
     fetch(`${config.baseUrl}/scrape_recipe`,{
         method: 'post',
         headers: {
@@ -45,7 +46,7 @@ const UrlInput = () => {
         <h1 className="flex-start font-bold mr-10"> Scrape Recipe</h1>
       <input
         type="text"
-        placeholder="Enter URL"
+        placeholder="Enter URL (ex. http://domain.com)"
         value={url}
         onChange={handleInputChange}
         className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring focus:border-blue-300"
