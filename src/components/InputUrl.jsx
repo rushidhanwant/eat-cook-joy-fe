@@ -32,7 +32,6 @@ const UrlInput = () => {
         }
         response.json()
         .then((data) => {
-            console.log(data);
             setOuput(data)
             localStorage.setItem('recipe', JSON.stringify(data));
         })

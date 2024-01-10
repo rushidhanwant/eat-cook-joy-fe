@@ -16,7 +16,6 @@ const MenuSuggestion = () => {
     setLoading(true)
     setOuput([])
     const recipeData = JSON.parse(localStorage.getItem('recipe'));
-    console.log("recipeData",recipeData)
     fetch(`${config.baseUrl}/get_menu_suggestion`,{
         method: 'post',
         headers: {
@@ -37,7 +36,6 @@ const MenuSuggestion = () => {
         }
         response.json()
         .then((data) => {
-            console.log(data);
             setOuput(data)
         })
     }).finally(() => {

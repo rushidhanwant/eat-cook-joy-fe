@@ -2,7 +2,6 @@ import React from 'react';
 
 const OutputMenu = (props) => {
     const data = props.output;
-    console.log("dataaa",data)
     
     const lines = data.suggested_menu.content.split("\n")
     
