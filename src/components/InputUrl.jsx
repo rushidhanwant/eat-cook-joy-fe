@@ -19,6 +19,7 @@ const UrlInput = () => {
         method: 'post',
         headers: {
             "Content-Type": "application/json",
+            "x-api-key": config.apikey,
         },
         body: JSON.stringify({
             "link": url
